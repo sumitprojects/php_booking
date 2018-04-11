@@ -7,6 +7,11 @@ $hoteldata = selectalldataby("hotels");
 <!-- /. NAV SIDE  -->
 <div id="page-wrapper">
     <h3>Hotel Details</h3>
+    <?php
+    if (!empty($_SESSION['error'])) {
+        echo $_SESSION['error'];
+    }
+    ?>
         <table class="table table-striped table-bordered table-hover">
             <thead>
             <tr>
@@ -63,7 +68,10 @@ $hoteldata = selectalldataby("hotels");
 <!-- /. PAGE WRAPPER  -->
 </div>
 <!-- /. WRAPPER  -->
-
+<?php
+unset($_SESSION['error']);
+unset($_SESSION['action']);
+?>
 <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
 <!-- JQUERY SCRIPTS -->
 <script src="assets/js/jquery-1.10.2.js"></script>

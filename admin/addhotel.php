@@ -1,6 +1,6 @@
 ﻿<?PHP
 include('header.php');
-if (!empty($_SESSION['hotel_id']) && $_SESSION['action'] == "update"){
+if (!empty($_SESSION['hotel_id']) && $_SESSION['action'] === "update"){
     $data = selectalldatabyid("hotels","hotel_id",$_SESSION['hotel_id']);
 }else{
     $data = null;
@@ -33,11 +33,11 @@ if (!empty($_SESSION['hotel_id']) && $_SESSION['action'] == "update"){
         <div class="row">
             <label>City:</label>
             <select class="form-control" name="city">
-                <option value="Los Angeles">Los Angeles</option>
-                <option value="San Francisco">San Francisco</option>
-                <option value="Santa Diego">Santa Diego</option>
-                <option value="Modesto">Modesto</option>
-                <option value="Beverly Hills">Beverly Hills</option>
+                <option value="Los Angeles" <?php if(isset($data['city'])){ if ("Los Angeles" === $data['city']){echo "selected";}} ?>>Los Angeles</option>
+                <option value="San Francisco" <?php if(isset($data['city'])){ if ("San Francisco" === $data['city']){echo "selected";}} ?>>San Francisco</option>
+                <option value="Santa Diego" <?php if(isset($data['city'])){ if ("Santa Diego" === $data['city']){echo "selected";}} ?>>Santa Diego</option>
+                <option value="Modesto" <?php if(isset($data['city'])){ if ("Modesto" === $data['city']){echo "selected";}} ?>>Modesto</option>
+                <option value="Beverly Hills" <?php if(isset($data['city'])){ if ("Beverly Hills" === $data['city']){echo "selected";}} ?>>Beverly Hills</option>
             </select>
         </div>
         <br>
@@ -69,8 +69,8 @@ if (!empty($_SESSION['hotel_id']) && $_SESSION['action'] == "update"){
         <div class="row">
             <label>Hotel Status:</label>
             <select class="form-control" id="hotel_status" name="hotel_status">
-                <option value="Enable">Enable</option>
-                <option value="Unable">Unable</option>
+                <option value="Enable" <?php if($data['status'] === "Enable"){echo "selected";}?>>Enable</option>
+                <option value="Unable" <?php if($data['status'] === "Disable"){echo "selected";}?>>Unable</option>
             </select>
         </div>
         <br>        

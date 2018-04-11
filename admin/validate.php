@@ -2,7 +2,7 @@
 // header("Location: dashboard.php");
 include("function.php");
 session_start();
-
+$hotel_data = null;
 
 function getemployeedata()
 {
@@ -30,7 +30,8 @@ function getemployeedata()
 
 function gethoteldata()
 {
-    if (isset($_FILES['hotel_image']['name'])) {
+    var_dump($_FILES);
+    if ($_FILES['hotel_image']['error'] === 0) {
         $status = fileupload("assets/img/", $_FILES['hotel_image']['name'], $_FILES['hotel_image']['tmp_name']);
         if ($status === 1) {
             $hotel_data = array("hotel_name" => $_POST['hotel_name'],
@@ -60,10 +61,10 @@ function getroomdata()
     if (!empty($_POST['facility'])) {
         $facility_data = implode(",", $_POST['facility']);
     }
-    if (isset($_FILES['image']['name'])) {
+    if ($_FILES['image']['error'] === 0) {
         $status = fileupload("assets/img/", $_FILES['image']['name'], $_FILES['image']['tmp_name']);
         if ($status === 1) {
-            $room_data = array("room_city_id" => $_POST['room_city_id'],
+            $room_data = array("hotel_id" => $_POST['hotel_id'],
                 "room_no" => $_POST['room_no'],
                 "image" => $_FILES['image']['name'],
                 "room_type" => $_POST['room_type'],
@@ -75,7 +76,7 @@ function getroomdata()
             return $room_data;
         }
     } else {
-        $room_data = array("room_city_id" => $_POST['room_city_id'],
+        $room_data = array("hotel_id" => $_POST['hotel_id'],
             "room_no" => $_POST['room_no'],
             "room_type" => $_POST['room_type'],
             "capacity" => $_POST['capacity'],
@@ -178,7 +179,6 @@ if (isset($_POST["addhotel"])) {
     if (empty($_POST['hotel_id'])) {
         $hoteldata = gethoteldata();
         $result = build_sql_check("hotels", "city", $_POST['city']);
-
         if ($result == 0) {
             $status = checkdata($hoteldata);
             if ($status === 0) {
@@ -198,6 +198,7 @@ if (isset($_POST["addhotel"])) {
         if ($status === 0) {
             $success = build_sql_update("hotels", $hoteldata, "hotel_id", $id);
             if ($success > 0) {
+                $_SESSION['error'] = "Data updated successfully";
                 header("location:viewhotel.php");
             } else {
                 $_SESSION['error'] = "Data not updated";

@@ -1,5 +1,6 @@
 <?PHP
 include('header.php');
+$hotel_data = selectalldataby("hotels");
 if (!empty($_SESSION['room_id']) && $_SESSION['action'] == "update"){
     $data = selectalldatabyid("rooms","room_id",$_SESSION['room_id']);
     $ficility = explode(",",$data['facility']);
@@ -23,13 +24,11 @@ if (!empty($_SESSION['room_id']) && $_SESSION['action'] == "update"){
        <input type="hidden" class="form-control" name="room_id" value="<?=$data['room_id']?>">
 
         <div class="row">
-            <label></i>Room City Id:</label>
-            <select class="form-control" name="room_city_id">
-                <option value="Los Angeles">Los Angeles</option>
-                <option value="San Francisco">San Francisco</option>
-                <option value="Santa Diego">Santa Diego</option>
-                <option value="Modesto">Modesto</option>
-                <option value="Beverly Hills">Beverly Hills</option>
+            <label></i>Select City of Hotel:</label>
+            <select class="form-control" name="hotel_id">
+                <?php foreach ($hotel_data as $col => $row):?>
+                <option value="<?=$row['hotel_id']?>" <?php if(is_array($data) && $data['hotel_id'] == $row['hotel_id']){ echo "selected";}?>><?=$row['city']?></option>
+                <?php endforeach;?>
             </select>
         </div>
         <br>
@@ -46,11 +45,11 @@ if (!empty($_SESSION['room_id']) && $_SESSION['action'] == "update"){
          <div class="row">
             <label></i>Room Type:</label>
             <select id="room_type" type="text" class="form-control" name="room_type">
-                <option value="Deluxe Guest Room">Deluxe Guest Room</option><?=$data['room_type']?>
-                <option value="Superior Guest Room">Superior Guest Room</option>
-                <option value="Club Level Guest Room">Club Level Guest Room</option>
-                <option value="Single Guest Room">Single Guest Room</option>
-                <option value="Junior Guest Room">Junior Guest Room</option>
+                <option value="Deluxe Guest Room" <?php if(isset($data['room_type'])){ if ("Deluxe Guest Room" === $data['room_type']){echo "selected";}} ?>>Deluxe Guest Room</option>
+                <option value="Superior Guest Room" <?php if(isset($data['room_type'])){ if ("Superior Guest Room" === $data['room_type']){echo "selected";}} ?>>Superior Guest Room</option>
+                <option value="Club Level Guest Room" <?php if(isset($data['room_type'])){ if ("Club Level Guest Room" === $data['room_type']){echo "selected";}} ?>>Club Level Guest Room</option>
+                <option value="Single Guest Room" <?php if(isset($data['room_type'])){ if ("Single Guest Room" === $data['room_type']){echo "selected";}} ?>>Single Guest Room</option>
+                <option value="Junior Guest Room" <?php if(isset($data['room_type'])){ if ("Jumior Guest Room" === $data['room_type']){echo "selected";}} ?>>Junior Guest Room</option>
             </select>
         </div>
         </br>
@@ -73,18 +72,18 @@ if (!empty($_SESSION['room_id']) && $_SESSION['action'] == "update"){
         
         <div class="row">
             <label></i>Facility:</label><br>
-            <input type="checkbox" name="facility[]" value="Loundry" <?php if(is_array($data)){if(in_array("Loundry",$ficility,strict)){echo "checked";}}?> >Loundry<br>
-            <input type="checkbox" name="facility[]" value="Wi-Fi" <?php if(is_array($data)){if(in_array("Wi-Fi",$ficility,strict)){echo "checked";}}?>>Wi-Fi<br>
-            <input type="checkbox" name="facility[]" value="Food" <?php if(is_array($data)){if(in_array("Food",$ficility,strict)){echo "checked";}}?>>Food<br>
-            <input type="checkbox" name="facility[]" value="Room Service" <?php if(is_array($data)){if(in_array("Room Service",$ficility,strict)){echo "checked";}}?>>Room Service<br>
-            <input type="checkbox" name="facility[]" value="Hair dryer" <?php if(is_array($data)){if(in_array("Hair dryer",$ficility,strict)){echo "checked";}}?>>Hair dryer<br>
-            <input type="checkbox" name="facility[]" value="Iron & ironing board" <?php if(is_array($data)){if(in_array("Iron & ironing board",$ficility,strict)){echo "checked";}}?>>Iron & ironing board<br>
-            <input type="checkbox" name="facility[]" value="Aircondition" <?php if(is_array($data)){if(in_array("Aircondition",$ficility,strict)){echo "checked";}}?>>Aircondition<br>
+            <input type="checkbox" name="facility[]" value="Loundry" <?php if(is_array($data)){if(in_array("Loundry",$ficility,true)){echo "checked";}}?> >Loundry<br>
+            <input type="checkbox" name="facility[]" value="Wi-Fi" <?php if(is_array($data)){if(in_array("Wi-Fi",$ficility,true)){echo "checked";}}?>>Wi-Fi<br>
+            <input type="checkbox" name="facility[]" value="Food" <?php if(is_array($data)){if(in_array("Food",$ficility,true)){echo "checked";}}?>>Food<br>
+            <input type="checkbox" name="facility[]" value="Room Service" <?php if(is_array($data)){if(in_array("Room Service",$ficility,true)){echo "checked";}}?>>Room Service<br>
+            <input type="checkbox" name="facility[]" value="Hair dryer" <?php if(is_array($data)){if(in_array("Hair dryer",$ficility,true)){echo "checked";}}?>>Hair dryer<br>
+            <input type="checkbox" name="facility[]" value="Iron & ironing board" <?php if(is_array($data)){if(in_array("Iron & ironing board",$ficility,true)){echo "checked";}}?>>Iron & ironing board<br>
+            <input type="checkbox" name="facility[]" value="Aircondition" <?php if(is_array($data)){if(in_array("Aircondition",$ficility,true)){echo "checked";}}?>>Aircondition<br>
         </div>
         <br>
         <div class="row">
             <label>Booking Status:</label>
-            <input id="booking_status" type="text" readonly class="form-control" name="booking_status" value="<?=$data['booking_status']?>">
+            <input id="booking_status" type="text" readonly class="form-control" name="booking_status" value="<?if(isset($data['booking_status'])){ echo  $data['booking_status'];}else{echo 0;}?>">
         </div>
        
         <br>
@@ -122,7 +121,6 @@ if (!empty($_SESSION['room_id']) && $_SESSION['action'] == "update"){
    unset($_SESSION['hotel_id']);
    unset($_SESSION['error']);
    unset($_SESSION['action']);
-
 ?>
 </body>
 </html>
