@@ -1,48 +1,9 @@
-<?php include ("dbconnection.php");
+<?php
+include 'header.php';
+include ("dbconnection.php");
 include 'function.php';
-session_start();
 $room_type_data = selectdistictrow('rooms','room_type');
 
-$msg='';
-$errormsg='';
-
-
-
-if(isset($_POST["book"]))
-{
-      if(isset($_POST["room_type"])){
-      //  if ($_POST['check_out'] > $_POST['check_in']) {        
-        $room_no_data = roomdatabytype($_POST['room_type']);
-        $booking_data = array('room_no' => $room_no_data['room_no'],
-        'reg_id' => $_SESSION['reg_id'],
-        'guest_name' => $_POST['guest_name'],
-        'check_in' => $_POST['check_in'],
-        'check_out' => $_POST['check_out'],
-        'adult' => $_POST['adult'],
-        'children' => $_POST['children']);
-           $cap = $booking_data['adult'] + $booking_data['children'];
-            if($cap <= $room_no_data['capacity']){
-                $status = build_sql_insert("booking",$booking_data);
-                $room_booked = roomupdatequery("rooms","room_no",$booking_data['room_no']);
-                $data = bookingidbyroomno("booking","room_no",$booking_data['room_no'],"booking_id");
-                $_SESSION['booking_id'] = $data['booking_id'];
-                header("Location: payment.php");
-            }else{
-              $errormsg='<div class="alert alert-danger">
-                <button type="button" class="close" data-dismiss="alert">×</button>
-                  <strong>Got some Error.</strong>
-                </div>';
-            }
-          // }else{
-          //        $errormsg='<div class="alert alert-danger">
-          //       <button type="button" class="close" data-dismiss="alert">×</button>
-          //         <strong>Got some Error.</strong>
-          //       </div>';
-
-          //   }   
-      }  
-}
-include 'header.php';
 ?>
 	<body>
 <!--==============================header=================================-->
@@ -65,7 +26,7 @@ include 'header.php';
 			<div class="container_12">
 						<h3>BOOK YOUR STAY HERE</h3>
 						<div class="tab-pane active tab1">
-                      <form class="form-horizontal" role="form" method="POST">
+                      <form class="form-horizontal" role="form" method="POST" action="validate.php">
                       <div class="form-group">
                         <label class="col-sm-2 control-label">Guest Name</label>
                         <div class="col-sm-10">

@@ -1,11 +1,7 @@
 <?PHP
+include 'header.php';
 include 'function.php';
-echo $_SESSION['reg_id'];
-echo $_SESSION['booking_id'];
-
-$booking_data = selectalldatabyid("booking","booking_id",$_SESSION['booking_id']); 
-
-include "header.php";
+$booking_data = selectalldatabyid("booking","booking_id",$_SESSION['booking_id']);
 ?>
 
 	<body>
