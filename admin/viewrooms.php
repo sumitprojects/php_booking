@@ -2,7 +2,21 @@
 include('header.php');
 $roomdata = selectalldataby("rooms");
 ?>
-
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#search').on('keyup',function(){
+            var searchTerm = $(this).val().toLowerCase();
+            $('#datatable tbody tr').each(function(){
+                var lineStr = $(this).text().toLowerCase();
+                if(lineStr.indexOf(searchTerm) === -1){
+                    $(this).hide();
+                }else{
+                    $(this).show();
+                }
+            });
+        });
+    });
+</script>
 <!-- /. NAV SIDE  -->
 <div id="page-wrapper">
     <h3>Room Details</h3>
@@ -10,8 +24,10 @@ $roomdata = selectalldataby("rooms");
     if (!empty($_SESSION['error'])) {
         echo $_SESSION['error'];
     }
-    ?>
-        <table class="table table-striped table-bordered table-hover">
+    ?> <label>Search</label>
+    <input id="search" type="text" class="form-control" name="field">
+    <br>
+        <table class="table table-striped table-bordered table-hover" id="datatable">
             <thead>
             <tr>
                 <th>Hotel City</th>

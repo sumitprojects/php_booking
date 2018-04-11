@@ -2,10 +2,28 @@
 include('header.php');
 $emp_data = selectalldataby("employee");
 ?>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#search').on('keyup',function(){
+            var searchTerm = $(this).val().toLowerCase();
+            $('#datatable tbody tr').each(function(){
+                var lineStr = $(this).text().toLowerCase();
+                if(lineStr.indexOf(searchTerm) === -1){
+                    $(this).hide();
+                }else{
+                    $(this).show();
+                }
+            });
+        });
+    });
+</script>
 <!-- /. NAV SIDE  -->
 <div id="page-wrapper" style="overflow-x: scroll">
+    <label>Search</label>
+    <input id="search" type="text" class="form-control" name="field">
+    <br>
     <h3>Employee Details</h3>
-    <table class="table table-striped table-bordered table-hover">
+    <table class="table table-striped table-bordered table-hover" id="datatable">
         <thead>
         <tr>
             <th>Emp ID</th>

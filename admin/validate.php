@@ -107,6 +107,7 @@ if (isset($_POST["addemp"])) {
         if ($result == 0) {
             $status = checkdata(getemployeedata());
             if ($status === 0) {
+                $_SESSION['error'] = "Data inserted successfully";
                 $success = build_sql_insert("employee", getemployeedata());
                 echo '<script>window.location="http://localhost/admin/viewemp.php"</script>';
             } else {
@@ -121,6 +122,7 @@ if (isset($_POST["addemp"])) {
         if ($status === 0) {
             $success = build_sql_update("employee", getemployeedata(), "emp_id", $emp_id);
             if ($success > 0) {
+                $_SESSION['error'] = "Data updated successfully";
                 header("location:viewemp.php");
             } else {
                 $_SESSION['error'] = "Data not updated";
@@ -161,6 +163,7 @@ if (isset($_POST["addemp"])) {
         $status = adminlogin($data);
         if ($status === 1) {
             $_SESSION['u_name'] = $data['u_name'];
+            $_SESSION['error'] = "successfully loggedin";
             header("location:dashboard.php");
         } else {
             $_SESSION['error'] = "Invalid Data";
@@ -183,6 +186,7 @@ if (isset($_POST["addhotel"])) {
             $status = checkdata($hoteldata);
             if ($status === 0) {
                 $success = build_sql_insert("hotels", $hoteldata );
+                $_SESSION['error'] = "Data inserted successfully";
                 echo '<script>window.location="http://localhost/admin/viewhotel.php"</script>';
             } else {
                 $_SESSION['error'] = "Please Fill the Data";
@@ -236,6 +240,7 @@ if (isset($_POST["addrooms"])) {
             $status = checkdata($roomdata);
             if ($status === 0) {
                 $success = build_sql_insert("rooms", $roomdata);
+                $_SESSION['error'] = "Data inserted successfully";
                 echo '<script>window.location="http://localhost/admin/viewrooms.php"</script>';
             } else {
                 $_SESSION['error'] = "Please Fill the Data";
@@ -252,6 +257,7 @@ if (isset($_POST["addrooms"])) {
         if ($status === 0) {
             $success = build_sql_update("rooms", $roomdata, "room_id", $id);
             if ($success > 0) {
+                $_SESSION['error'] = "Data updated successfully";
                 header("location:viewrooms.php");
             } else {
                 $_SESSION['error'] = "Data not updated";
@@ -297,5 +303,3 @@ function checkdata($data)
         return 1;
     }
 }
-
-?>
