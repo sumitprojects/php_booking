@@ -18,10 +18,8 @@ $feedbackdata_data = selectalldataby("feedback");
                 <div class="main-box mb-dull">
                     <a href="#">
                         <i></i>
-						
                         <h5>Hotels</h5>
                         <?php echo counttablerows("hotels");
-
                         ?>
                     </a>
                 </div>
@@ -30,10 +28,8 @@ $feedbackdata_data = selectalldataby("feedback");
                 <div class="main-box mb-dull">
                     <a href="#">
                         <i></i>
-                        <h5>Registered Users</h5>
-                        <?php echo counttablerows("registration");
-
-                        ?>
+                        <h5>Available Cities</h5>
+                        Los Angeles, San Francisco, Santa Diego, Modesto, Beverly Hills
                     </a>
                 </div>
             </div>
@@ -46,11 +42,78 @@ $feedbackdata_data = selectalldataby("feedback");
                     </a>
                 </div>
             </div>
-
         </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="main-box mb-dull">
+                    <a href="#">
+                        <i></i>
 
+                        <h5>Total Rooms</h5>
+                        <?php echo counttablerows("rooms");
+
+                        ?>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="main-box mb-dull">
+                    <a href="#">
+                        <i></i>
+                        <h5>Available Rooms</h5>
+                        <?php $avail_room = findavilrooms("rooms",1);
+                        echo $avail_room['availroom'];
+                        ?>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="main-box mb-pink">
+                    <a href="#">
+                        <i></i>
+                        <h5>Booking Status</h5>
+                        <?php echo counttablerows("booking"); ?>
+                    </a>
+                </div>
+            </div>
+        </div>
         <!-- /. ROW  -->
+        <div class="row">
+            <div class="col-md-4">
+                <div class="main-box mb-dull">
+                    <a href="#">
+                        <i></i>
 
+                        <h5>Genuine Customer</h5>
+                        <?php $cust = selectdistictrow("booking","reg_id");
+                       echo count($cust);
+                        ?>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="main-box mb-dull">
+                    <a href="#">
+                        <i></i>
+                        <h5>Registered Users</h5>
+                        <?php echo counttablerows("registration");
+                        ?>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="main-box mb-dull">
+                    <a href="#">
+                        <i></i>
+                        <h5>Available Rooms</h5>
+                        <?php $avail_room = selectalldatabyid("rooms","booking_status",0);
+                            echo count($avail_room);
+                        ?>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- /. ROW  -->
         <!--
                 <div class="row">
                     <div class="col-md-8">

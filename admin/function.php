@@ -182,3 +182,15 @@ function findavilrooms($table,$hotel_id){
     echo "</pre>";*/
     return $row;
 }
+function selectdistictrow($table,$col){
+    try{
+        $con = connection();
+        $cols = array();
+        $sql = "SELECT DISTINCT($col) from $table";
+        $result = mysqli_query($con, $sql);//0 or 1>
+        $row = mysqli_fetch_all($result,MYSQLI_ASSOC);
+    }catch(Exception $e){
+        echo $e->getMessage();
+    }
+    return($row);
+}

@@ -94,19 +94,13 @@ $data = selectbyusername($_SESSION['u_name']);
                             </li>                           
                         </ul>
                     </li>
-					<li>
-                        <a href="#"><i class="glyphicon glyphicon-search"></i>Search<span class="fa arrow"></span></a>
-						<ul class="nav nav-second-level">
-                            <li>
-                                <a href="searchhotel.php"></i>Hotel</a>
-                            </li>
-                            <li>
-                                <a href="searchrooms.php"></i>Rooms</a>
-                            </li>
-                             <li>
-                                <a href="searchemp.php"></i>Employees</a>
-                            </li>                           
-                        </ul>
+                    <li>
+                        <a href="viewbooking.php"><i class="glyphicon glyphicon-asterisk"></i>Booking</a>
+
+                    </li>
+                    <li>
+                        <a href="viewuser.php"><i class="glyphicon glyphicon-user"></i>Users</a>
+
                     </li>
                     <li>
                         <a href="sms.php"><i class="glyphicon glyphicon-envelope"></i>SMS</a>

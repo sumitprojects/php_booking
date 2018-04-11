@@ -3,8 +3,8 @@ include 'header.php';
 include ("dbconnection.php");
 include 'function.php';
 $room_type_data = selectdistictrow('rooms','room_type');
-
 ?>
+
 	<body>
 <!--==============================header=================================-->
 		<header>
@@ -22,9 +22,13 @@ $room_type_data = selectdistictrow('rooms','room_type');
 		</header>
 <!--==============================Content=================================-->
 		<div class="content">
-			
 			<div class="container_12">
 						<h3>BOOK YOUR STAY HERE</h3>
+                        <span> <?php
+                            if (!empty($_SESSION['error'])) {
+                                echo $_SESSION['error'];
+                            }
+                            ?></span>
 						<div class="tab-pane active tab1">
                       <form class="form-horizontal" role="form" method="POST" action="validate.php">
                       <div class="form-group">
@@ -100,4 +104,9 @@ $room_type_data = selectdistictrow('rooms','room_type');
 			</div>
 		</div>
 <!--==============================footer=================================-->
+<?php
+if (!empty($_SESSION['error'])) {
+    unset($_SESSION['error']);
+}
+?>
 <?php include 'footer.php';?>

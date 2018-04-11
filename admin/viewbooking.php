@@ -1,7 +1,6 @@
 <?PHP
 include('header.php');
 $booking_data = selectalldataby("booking");
-
 ?>
 <script type="text/javascript">
     $(document).ready(function(){
@@ -41,22 +40,23 @@ $booking_data = selectalldataby("booking");
         </tr>
         </thead>
         <tbody>
-        <?php
-        foreach ($booking_data as $col => $row) {
-            $room_data = selectalldatabyid("rooms","room_no",$row['room_no']);
-            $user_data = selectalldatabyid("registration","reg_id",$row['reg_id']);
-            ?>
+        <?php foreach ($booking_data as $col => $row) {
+            $user_data = selectalldatabyid("registration","reg_id",$row['reg_id']);?>
             <tr>
                 <td><?php echo $row['booking_id']; ?></td>
-                <td><?php echo $user_data['first_name'] . " " . $user_data['last_name']; ?></td>
+                <td><?php echo $user_data['fname'] . " " . $user_data['lname'];?></td>
                 <td><?php echo $row['guest_name']; ?></td>
-                <td><?php echo $room_data['room_no'];  echo $row['room_no'];?></td>
-                <td><?php echo $room_data['room_type']; ?></td>
+                <td><?php echo $row['room_no'];?></td>
+                <td><?php if(isset($row['room_no'])) {
+                    $room_data = selectalldatabyid("rooms","room_no","'".$row['room_no']."'");
+                    echo $room_data['room_type'];} ?></td>
                 <td><?php echo $row['check_in']; ?></td>
                 <td><?php echo $row['check_out']; ?></td>
                 <td><?php echo $row['adult']; ?></td>
                 <td><?php echo $row['children']; ?></td>
-                <td><?php echo $room_data['rent']; ?></td>
+                <td><?php if(isset($row['room_no'])) {
+                    $room_data = selectalldatabyid("rooms","room_no","'".$row['room_no']."'");
+                    echo $room_data['rent']; }?></td>
 <!--                <td>-->
 <!--                    <form action="validate.php" method="post">-->
 <!--                        <input type="hidden" name="database" value="booking">-->
@@ -73,8 +73,7 @@ $booking_data = selectalldataby("booking");
 <!--                    </form>-->
 <!--                </td>-->
             </tr>
-            <?php
-        } ?>
+            <?php } ?>
         </tbody>
     </table>
     <br>
