@@ -1,19 +1,59 @@
 <?php
 // header("Location: dashboard.php");
+	date_default_timezone_set('Asia/Kolkata');
+
+	function get_format($df) {
+		/*
+		  echo '<pre>';
+		  print_r($df);
+		  echo '</pre>';
+		 *
+		 */
+
+
+
+		$str = '';
+		$str .= ($df->invert == 1) ? ' - ' : '';
+		if ($df->y > 0) {
+			// years
+			$str .= ($df->y > 1) ? $df->y . ' Years ' : $df->y . ' Year ';
+		} if ($df->m > 0) {
+			// month
+			$str .= ($df->m > 1) ? $df->m . ' Months ' : $df->m . ' Month ';
+		} if ($df->d > 0) {
+			// days
+			$str .= ($df->d > 1) ? $df->d . ' Days ' : $df->d . ' Day ';
+		} if ($df->h > 0) {
+			// hours
+			$str .= ($df->h > 1) ? $df->h . ' Hours ' : $df->h . ' Hour ';
+		} if ($df->i > 0) {
+			// minutes
+			$str .= ($df->i > 1) ? $df->i . ' Minutes ' : $df->i . ' Minute ';
+		} if ($df->s > 0) {
+			// seconds
+			$str .= ($df->s > 1) ? $df->s . ' Seconds ' : $df->s . ' Second ';
+		}
+
+
+
+		echo $str;
+	}
 	include("function.php");
 	session_start();
 	if ( isset($_POST[ "book" ]) ) {
 		if ( isset($_POST[ "room_type" ]) ) {
-			$check_in = date_create($_POST[ 'check_in' ]);
-			$check_out = date_create($_POST[ 'check_out' ]);
+			$check_in = new DateTime($_POST['check_in']);
+			$check_out = new DateTime($_POST['check_out']);
+			$date_diff = $check_in->diff($check_out);
 
-			if ( $check_out > $check_in ) {
+			if ( $date_diff->invert !== 1 ) {
 				$room_no_data = roomdatabytype($_POST[ 'room_type' ]);
 				$booking_data = array( 'room_no' => $room_no_data[ 'room_no' ],
 					'reg_id' => $_SESSION[ 'reg_id' ],
 					'guest_name' => $_POST[ 'guest_name' ],
 					'check_in' => $_POST[ 'check_in' ],
 					'check_out' => $_POST[ 'check_out' ],
+					'type' => $_POST['room_type'],
 					'adult' => $_POST[ 'adult' ],
 					'children' => $_POST[ 'children' ] );
 
@@ -22,10 +62,15 @@
 				if ( $status === 0 ) {
 					$cap = $booking_data[ 'adult' ] + $booking_data[ 'children' ];
 					if ( $cap <= $room_no_data[ 'capacity' ] ) {
-						$status = build_sql_insert("booking", $booking_data);
+						$rate = selectalldatabyid("rooms","room_no","'".$booking_data['room_no']."'");
+						$room_rate = (double)str_replace("$","",$rate['rent']);
+						$total_payable_amout = $room_rate * $date_diff->days;
+						$amount = array("total_amount"=>$total_payable_amout);
+						$booking_result = array_merge($booking_data,$amount);
+						$status = build_sql_insert("booking", $booking_result);
 						// $room_booked = roomupdatequery("rooms","room_no",$booking_data['room_no']);
-						$data = bookingidbyroomno("booking", "room_no", $booking_data[ 'room_no' ], "booking_id");
-						$_SESSION[ 'reg_id' ] = $booking_data[ 'reg_id' ];
+						$data = bookingidbyroomno("booking", "room_no", $booking_result[ 'room_no' ], "booking_id");
+						$_SESSION[ 'reg_id' ] = $booking_result[ 'reg_id' ];
 						$_SESSION[ 'booking_id' ] = $data[ 'booking_id' ];
 						header("Location: payment.php");
 					} else {

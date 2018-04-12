@@ -1,3 +1,10 @@
+<?php
+	include("function.php");
+	$hoteldata = selectalldataby("hotels");
+	$roomdata = selectalldataby("rooms");
+	$booking_data = selectalldataby("booking");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,9 +18,6 @@
     <div class="header">
         <div id="multiple" class="article">
         <div class="title">
-            
-            <h3><span>Multiple range Calendar</span></h3>
-            <h4>PIGNOSE Calendar supports multiple range picker</h4>
         </div>
         <p>Input field: <input type="text" id="checkdate" value="" class="calendar"></p>
         <div class="multi-select-calendar"></div>
@@ -104,19 +108,9 @@
             multiple: true,
             select: onSelectHandler,
             minDate: minDate,
+            <?php foreach ($booking_data as $col => $row)?>
             disabledRanges: [
-                ['2016-10-05', '2016-10-21'],
-                ['2016-11-01', '2016-11-07'],
-                ['2016-11-19', '2016-11-21'],
-                ['2016-12-05', '2016-12-08'],
-                ['2016-12-17', '2016-12-18'],
-                ['2016-12-29', '2016-12-30'],
-                ['2017-01-10', '2017-01-20'],
-                ['2017-02-10', '2017-04-11'],
-                ['2017-07-04', '2017-07-09'],
-                ['2017-12-01', '2017-12-25'],
-                ['2018-04-27', '2018-04-27'],
-                ['2018-05-10', '2018-09-17'],
+                ['<?=$row['check_in']?>', '<?=$row['check_out']?>'],
             ]
         });
     });

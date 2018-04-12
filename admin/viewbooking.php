@@ -54,9 +54,7 @@ $booking_data = selectalldataby("booking");
                 <td><?php echo $row['check_out']; ?></td>
                 <td><?php echo $row['adult']; ?></td>
                 <td><?php echo $row['children']; ?></td>
-                <td><?php if(isset($row['room_no'])) {
-                    $room_data = selectalldatabyid("rooms","room_no","'".$row['room_no']."'");
-                    echo $room_data['rent']; }?></td>
+                <td>$<?php echo $row['total_amount']; ?></td>
 <!--                <td>-->
 <!--                    <form action="validate.php" method="post">-->
 <!--                        <input type="hidden" name="database" value="booking">-->
