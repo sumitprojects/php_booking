@@ -79,7 +79,7 @@ $feedbackdata_data = selectalldataby("feedback");
         </div>
         <!-- /. ROW  -->
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="main-box mb-dull">
                     <a href="#">
                         <i></i>
@@ -91,23 +91,12 @@ $feedbackdata_data = selectalldataby("feedback");
                     </a>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="main-box mb-dull">
                     <a href="#">
                         <i></i>
                         <h5>Registered Users</h5>
                         <?php echo counttablerows("registration");
-                        ?>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="main-box mb-dull">
-                    <a href="#">
-                        <i></i>
-                        <h5>Available Rooms</h5>
-                        <?php $avail_room = selectalldatabyid("rooms","booking_status",0);
-                            echo count($avail_room);
                         ?>
                     </a>
                 </div>

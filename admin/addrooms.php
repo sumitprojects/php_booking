@@ -27,7 +27,7 @@ if (!empty($_SESSION['room_id']) && $_SESSION['action'] == "update"){
             <label></i>Select City of Hotel:</label>
             <select class="form-control" name="hotel_id">
                 <?php foreach ($hotel_data as $col => $row):?>
-                <option value="<?=$row['hotel_id']?>" <?php if(is_array($data) && $data['hotel_id'] == $row['hotel_id']){ echo "selected";}?>><?=$row['city']?></option>
+                <option value="<?=$row['hotel_id']?>" <?php if(is_array($data) && $data['hotel_id'] == $row['hotel_id']){ echo "selected";}?>><?php echo $row['hotel_name']." in ".$row['city']?></option>
                 <?php endforeach;?>
             </select>
         </div>
