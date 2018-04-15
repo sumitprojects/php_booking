@@ -1,18 +1,32 @@
-<!--==============================footer=================================-->
-		<footer>
-			<div class="container_12">
-				<div class="grid_12">
-					<div class="socials">
-						<a href="#" class="fa fa-facebook"></a>
-						<a href="#" class="fa fa-twitter"></a>
-						<a href="#" class="fa fa-google-plus"></a>
-					</div>
-					<div class="copy">
-           			Rosewood International (c) 2018 | <a href="privacy.php">Privacy Policy</a> |<a href="terms.php"> Terms and Conditions</a>
-          			</div>
-				</div>
-			</div>
-		</footer>
+<?php
+	include("function.php");
+	$hoteldata = selectalldataby("hotels");
+	$roomdata = selectalldataby("rooms");
+	$booking_data = selectalldataby("booking");
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/components/icon.min.css">
+    <link rel="stylesheet" type="text/css" href="dist/css/pignose.calendar.min.css"/>
+</head>
+
+<body>
+<div id="wrapper">
+    <div class="header">
+        <div id="multiple" class="article">
+        <div class="title">
+        </div>
+        <p>Input field: <input type="text" id="checkdate" value="" class="calendar"></p>
+        <div class="multi-select-calendar"></div>
+        <div class="box"></div>
+        
+    </div>
+    </div>
+</div>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
 <script type="text/javascript" src="dist/js/pignose.calendar.full.min.js"></script>
@@ -34,7 +48,7 @@
             var $element = context.element;
             var $calendar = context.calendar;
             var $box = $element.siblings('.box').show();
-
+            
             var text = '';
 
             if (date[0] !== null) {
@@ -53,7 +67,7 @@
             }
 
             $box.text(text);
-            $("input#text-calendar").val(text);
+             $("#checkdate").val(text);
         }
 
         function onApplyHandler(date, context) {
@@ -68,9 +82,8 @@
 
             var $element = context.element;
             var $calendar = context.calendar;
-            //var $box = $element.siblings('.box').show();
-
-            var text = '';
+            var $box = $element.siblings('.box').show();
+            var text = 'You applied date ';
 
             if (date[0] !== null) {
                 text += date[0].format('YYYY-MM-DD');
@@ -86,20 +99,19 @@
             if (date[1] !== null) {
                 text += date[1].format('YYYY-MM-DD');
             }
-            $('input#text-calendar').val(text);
-            //$box.text(text);
 
+            $box.text(text);
         }
         var minDate = new Date();
         // Multiple picker type Calendar
-        $(function() {
-            $('input#text-calendar').pignoseCalendar({
-                apply: onApplyHandler,
-                buttons: true,
-                minDate: minDate,
-                multiple: true,
-                format: 'YYYY-MM-DD' // date format string. (2017-02-02)
-            });
+        $('.multi-select-calendar').pignoseCalendar({
+            multiple: true,
+            select: onSelectHandler,
+            minDate: minDate,
+            <?php foreach ($booking_data as $col => $row)?>
+            disabledRanges: [
+                ['<?=$row['check_in']?>', '<?=$row['check_out']?>'],
+            ]
         });
     });
     //]]>

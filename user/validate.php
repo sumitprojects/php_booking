@@ -1,17 +1,13 @@
 <?php
 // header("Location: dashboard.php");
 	date_default_timezone_set('Asia/Kolkata');
-
+	include "function.php";
+	if(!empty($_POST['city'])){
+		$room_type_data = selectdistictrowbyhotelcity("rooms", "room_type", "hotel_id",$_POST['city']);
+		$data = json_encode($room_type_data);
+		return $data;
+	}
 	function get_format($df) {
-		/*
-		  echo '<pre>';
-		  print_r($df);
-		  echo '</pre>';
-		 *
-		 */
-
-
-
 		$str = '';
 		$str .= ($df->invert == 1) ? ' - ' : '';
 		if ($df->y > 0) {
@@ -68,7 +64,7 @@
 						$amount = array("total_amount"=>$total_payable_amout);
 						$booking_result = array_merge($booking_data,$amount);
 						$status = build_sql_insert("booking", $booking_result);
-						// $room_booked = roomupdatequery("rooms","room_no",$booking_data['room_no']);
+						$room_booked = roomupdatequery("rooms","room_no",$booking_data['room_no']);
 						$data = bookingidbyroomno("booking", "room_no", $booking_result[ 'room_no' ], "booking_id");
 						$_SESSION[ 'reg_id' ] = $booking_result[ 'reg_id' ];
 						$_SESSION[ 'booking_id' ] = $data[ 'booking_id' ];

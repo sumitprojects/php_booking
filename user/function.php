@@ -139,7 +139,18 @@ function selectdistictrow($table,$col){
     }
     return($row);
 }
-
+	function selectdistictrowbyhotelcity($table,$col,$selectedcity,$hotel_id){
+		try{
+			$con = connection();
+			$cols = array();
+			$sql = "SELECT DISTINCT($col) from $table where $selectedcity = $hotel_id";
+			$result = mysqli_query($con, $sql);//0 or 1>
+			$row = mysqli_fetch_all($result,MYSQLI_ASSOC);
+		}catch(Exception $e){
+			echo $e->getMessage();
+		}
+		return($row);
+	}
 
 function selectbyusername($u_name){
     try {

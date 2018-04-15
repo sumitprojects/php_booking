@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 11, 2018 at 11:01 AM
+-- Generation Time: Apr 15, 2018 at 06:29 PM
 -- Server version: 5.6.37
 -- PHP Version: 7.1.8
 
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `hoteldb`
 --
-CREATE DATABASE IF NOT EXISTS `hoteldb` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `hoteldb`;
 
 -- --------------------------------------------------------
 
@@ -30,7 +28,7 @@ USE `hoteldb`;
 
 CREATE TABLE IF NOT EXISTS `billing` (
   `bill_id` int(10) NOT NULL,
-  `reg_id` varchar(50) NOT NULL,
+  `reg_id` int(20) NOT NULL,
   `room_no` varchar(50) NOT NULL,
   `bill_date` date NOT NULL,
   `payment_type` varchar(20) NOT NULL,
@@ -57,18 +55,16 @@ CREATE TABLE IF NOT EXISTS `booking` (
   `type` varchar(100) NOT NULL,
   `adult` bigint(20) NOT NULL,
   `children` bigint(20) NOT NULL,
-  `t_room` bigint(20) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+  `total_amount` varchar(20) NOT NULL,
+  `bill_id` int(10) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `booking`
 --
 
-INSERT INTO `booking` (`booking_id`, `room_no`, `reg_id`, `guest_name`, `tdate`, `check_in`, `check_out`, `type`, `adult`, `children`, `t_room`) VALUES
-(6, '101L', 1, 'test', '2018-04-11 10:45:31', '2018-04-12', '2018-04-11', '', 1, 1, 0),
-(7, '101L', 1, 'dsfs', '2018-04-11 10:49:09', '2018-04-20', '2018-04-21', '', 1, 1, 0),
-(8, '101L', 1, 'dsfsd', '2018-04-11 10:51:16', '2018-04-11', '2018-04-11', '', 1, 1, 0),
-(9, '101L', 1, 'dsfsd', '2018-04-11 10:51:40', '2018-04-11', '2018-04-11', '', 1, 1, 0);
+INSERT INTO `booking` (`booking_id`, `room_no`, `reg_id`, `guest_name`, `tdate`, `check_in`, `check_out`, `type`, `adult`, `children`, `total_amount`, `bill_id`) VALUES
+(15, '101L', 1, 'sdsad', '2018-04-12 18:58:45', '2018-04-13', '2018-04-28', 'Deluxe Guest Room', 1, 1, '1500', NULL);
 
 -- --------------------------------------------------------
 
@@ -255,7 +251,7 @@ CREATE TABLE IF NOT EXISTS `rooms` (
 --
 
 INSERT INTO `rooms` (`room_id`, `room_no`, `image`, `room_type`, `capacity`, `rent`, `facility`, `booking_status`, `status`, `hotel_id`) VALUES
-(1, '101L', 'E.jpg', 'Deluxe Guest Room', '3', '$100', 'Loundry,Wi-Fi,Food,Room Service', 0, 'Enable', 1),
+(1, '101L', 'E.jpg', 'Deluxe Guest Room', '3', '$100', 'Loundry,Wi-Fi,Food,Room Service', 1, 'Enable', 1),
 (2, '102L', 'E.jpg', 'Deluxe Guest Room', '3', '$103', 'Loundry,Wi-Fi,Food,Room Service', 0, 'Enable', 1),
 (3, '103L', 'E.jpg', 'Deluxe Guest Room', '4', '$107', 'Loundry,Wi-Fi,Food,Room Service', 0, 'Enable', 1),
 (4, '104L', 'E.jpg', 'Deluxe Guest Room', '5', '$109', 'Loundry,Wi-Fi,Food,Room Service', 0, 'Enable', 1),
@@ -265,7 +261,7 @@ INSERT INTO `rooms` (`room_id`, `room_no`, `image`, `room_type`, `capacity`, `re
 (8, '203L', 'H.jpg', 'Superior Guest Room', '4', '$106', 'Loundry,Wi-Fi,Food,Room Service,Hair dryer', 0, 'Enable', 1),
 (9, '204L', 'H.jpg', 'Superior Guest Room', '5', '$110', 'Loundry,Wi-Fi,Food,Room Service,Hair dryer', 0, 'Enable', 1),
 (10, '205L', 'H.jpg', 'Superior Guest Room', '6', '$112', 'Loundry,Wi-Fi,Food,Room Service,Hair dryer', 0, 'Enable', 1),
-(11, '301L', 'B.jpg', 'Club Level Guest Room', '2', '$800', 'Loundry,Wi-Fi,Food,Room Service,Hair dryer,Iron & ironing board,Aircondition', 0, 'Enable', 1),
+(11, '301L', 'B.jpg', 'Club Level Guest Room', '2', '$113', 'Loundry,Wi-Fi,Food,Room Service,Hair dryer,Iron & ironing board,Aircondition', 0, 'Enable', 1),
 (12, '302L', 'B.jpg', 'Club Level Guest Room', '3', '$120', 'Loundry,Wi-Fi,Food,Room Service,Hair dryer,Iron & ironing board,Aircondition', 0, 'Enable', 1),
 (13, '303L', 'B.jpg', 'Club Level Guest Room', '4', '$120', 'Loundry,Wi-Fi,Food,Room Service,Hair dryer,Iron & ironing board,Aircondition', 0, 'Enable', 1),
 (14, '304L', 'B.jpg', 'Club Level Guest Room', '5', '$120', 'Loundry,Wi-Fi,Food,Room Service,Hair dryer,Iron & ironing board,Aircondition', 0, 'Enable', 1),
@@ -319,13 +315,15 @@ INSERT INTO `subscribe` (`id`, `email`) VALUES
 -- Indexes for table `billing`
 --
 ALTER TABLE `billing`
-  ADD PRIMARY KEY (`bill_id`);
+  ADD PRIMARY KEY (`bill_id`),
+  ADD KEY `reg_id` (`reg_id`);
 
 --
 -- Indexes for table `booking`
 --
 ALTER TABLE `booking`
   ADD PRIMARY KEY (`booking_id`),
+  ADD UNIQUE KEY `bill_id` (`bill_id`),
   ADD KEY `reg_id` (`reg_id`);
 
 --
@@ -384,7 +382,7 @@ ALTER TABLE `billing`
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `booking_id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+  MODIFY `booking_id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `employee`
 --
@@ -425,9 +423,16 @@ ALTER TABLE `subscribe`
 --
 
 --
+-- Constraints for table `billing`
+--
+ALTER TABLE `billing`
+  ADD CONSTRAINT `fk_reg_id` FOREIGN KEY (`reg_id`) REFERENCES `registration` (`reg_id`) ON DELETE NO ACTION ON UPDATE CASCADE;
+
+--
 -- Constraints for table `booking`
 --
 ALTER TABLE `booking`
+  ADD CONSTRAINT `fk_bill` FOREIGN KEY (`bill_id`) REFERENCES `billing` (`bill_id`) ON DELETE SET NULL ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_reg` FOREIGN KEY (`reg_id`) REFERENCES `registration` (`reg_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --

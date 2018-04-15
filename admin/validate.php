@@ -3,7 +3,6 @@
 include("function.php");
 session_start();
 $hotel_data = null;
-
 function getemployeedata()
 {
     $employee_data = array("first_name" => $_POST['first_name'],
@@ -82,11 +81,9 @@ function getroomdata()
             "capacity" => $_POST['capacity'],
             "rent" => $_POST['rent'],
             "facility" => $facility_data,
-            "booking_status" => $_POST['booking_status'],
             "status" => $_POST['status']);
         return $room_data;
     }
-
 }
 
 function fileupload($target_dir, $basename, $temp_name)
@@ -231,7 +228,6 @@ if (isset($_POST["addhotel"])) {
 }
 
 //crud for rooms
-
 if (isset($_POST["addrooms"])) {
     if (empty($_POST['room_id'])) {
         $roomdata = getroomdata();
@@ -253,7 +249,6 @@ if (isset($_POST["addrooms"])) {
         $id = $_POST['room_id'];
         $roomdata = getroomdata();
         $status = checkdata($roomdata);
-
         if ($status === 0) {
             $success = build_sql_update("rooms", $roomdata, "room_id", $id);
             if ($success > 0) {
@@ -263,9 +258,9 @@ if (isset($_POST["addrooms"])) {
                 $_SESSION['error'] = "Data not updated";
                 header("location:viewrooms.php");
             }
-
         } else {
             $_SESSION['error'] = "Please Fill the Data";
+	        //header("location:viewrooms.php");
         }
 
     }
@@ -292,12 +287,13 @@ function checkdata($data)
     foreach ($data as $key => $value) {
         if (empty($value)) {
             $error = 1;
+            var_dump($value);
             break;
         } else {
             $value = filter_var($value, FILTER_SANITIZE_STRING);
         }
     }
-    if ($error == 0) {
+    if ($error === 0) {
         return 0;
     } else {
         return 1;

@@ -1,7 +1,13 @@
-<?PHP
+<?php
 	include 'header.php';
 	include 'function.php';
-	$booking_data = selectalldatabyid("booking", "booking_id", $_SESSION[ 'booking_id' ]);
+	if(empty($_SESSION['booking_id'])){
+		$booking_data = selectalldatabyid("booking", "booking_id", $_SESSION[ 'booking_id' ]);
+		$reg_user = selectalldatabyid("registration","reg_id",$booking_data['reg_id']);
+	}else{
+	    unset($_SESSION['booking_id']);
+	    header('location:index.php');
+    }
 ?>
 
     <body>
@@ -21,7 +27,11 @@
 <div class="content">
     <div class="container_12">
         <table>
-            </br></br>
+            </br>
+            <tr>
+                <th>Registered User Name</th>
+                <td><?php echo $reg_user[ 'fname' ]. " ". $reg_user['lname']; ?></td>
+            </tr>
             <tr>
                 <th>Guest Name</th>
                 <td><?php echo $booking_data[ 'guest_name' ]; ?></td>
@@ -35,30 +45,25 @@
                 <td><?= $booking_data[ 'check_out' ] ?></td>
             </tr>
             <tr>
+                <th>Room Type</th>
+                <td><?php echo $booking_data[ 'room_type' ]; ?></td>
+            </tr>
+            <tr>
+                <th>Adult</th>
+                <td><?php echo $booking_data[ 'adult']; ?></td>
+            </tr>
+            <tr>
+                <th>Children</th>
+                <td><?php echo $booking_data[ 'children' ]; ?></td>
+            </tr>
             <tr>
                 <th>Total Amount</th>
                 <td><?= $booking_data[ 'total_amount' ] ?></td>
             </tr>
-                <!--    	 <tr>
-    <th>Room Type</th>
-    <td><?php echo $_POST[ t_room ]; ?></td>
-   </tr>
-   <tr>
-    <th>Adult</th>
-    <td><?php echo $_POST[ adult ]; ?></td>
-   </tr>
-   <tr>
-    <th>Children</th>
-    <td><?php echo $_POST[ children ]; ?></td>
-   </tr>
- -->
             <tr>
                 <td><a href="bill.php">Generate Bill</a></td>
             </tr>
-            </tr>
         </table>
-
-
     </div>
 </div>
 <!--==============================footer=================================-->
