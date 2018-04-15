@@ -4,10 +4,7 @@
 	if(empty($_SESSION['booking_id'])){
 		$booking_data = selectalldatabyid("booking", "booking_id", $_SESSION[ 'booking_id' ]);
 		$reg_user = selectalldatabyid("registration","reg_id",$booking_data['reg_id']);
-	}else{
-	    unset($_SESSION['booking_id']);
-	    header('location:index.php');
-    }
+	}
 ?>
 
     <body>

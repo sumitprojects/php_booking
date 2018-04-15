@@ -143,7 +143,7 @@ function selectdistictrow($table,$col){
 		try{
 			$con = connection();
 			$cols = array();
-			$sql = "SELECT DISTINCT($col) from $table where $selectedcity = $hotel_id";
+			$sql = "SELECT DISTINCT($col) from $table where $selectedcity = $hotel_id AND booking_status=0";
 			$result = mysqli_query($con, $sql);//0 or 1>
 			$row = mysqli_fetch_all($result,MYSQLI_ASSOC);
 		}catch(Exception $e){

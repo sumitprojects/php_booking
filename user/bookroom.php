@@ -65,9 +65,6 @@
                         <label class="col-sm-2 control-label">Room Type</label>
                         <div class="col-sm-10">
                             <select class="form-control" id="room" name="room_type">
-								<?php foreach ( $room_type_data as $col => $row ) : ?>
-                                    <option value="<?= $row[ 'room_type' ] ?>"><?= $row[ 'room_type' ] ?></option>
-								<?php endforeach; ?>
                             </select>
                         </div>
                     </div>
@@ -116,7 +113,7 @@
                     {
                         // Loop through each of the results and append the option to the dropdown
                         $.each(result, function(k, v) {
-                            dropdown.append('<option value=s"' + v.room_type + '">' + v.room_type + '</option>');
+                            dropdown.append('<option value="' + v.room_type + '">' + v.room_type + '</option>');
                         });
                     }
                 }

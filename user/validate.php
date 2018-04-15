@@ -52,23 +52,21 @@ function test_function($action){
 	}
 	if ( isset($_POST[ "book" ]) ) {
 		if ( isset($_POST[ "room_type" ]) ) {
-			$check_in = new DateTime($_POST['check_in']);
-			$check_out = new DateTime($_POST['check_out']);
+			$check_date = explode(" ~ ",$_POST['daterange']);
+			$check_in = date_create($check_date[0]);
+			$check_out = date_create($check_date[1]);
 			$date_diff = $check_in->diff($check_out);
-
 			if ( $date_diff->invert !== 1 ) {
 				$room_no_data = roomdatabytype($_POST[ 'room_type' ]);
 				$booking_data = array( 'room_no' => $room_no_data[ 'room_no' ],
 					'reg_id' => $_SESSION[ 'reg_id' ],
 					'guest_name' => $_POST[ 'guest_name' ],
-					'check_in' => $_POST[ 'check_in' ],
-					'check_out' => $_POST[ 'check_out' ],
+					'check_in' => date_format($check_in,"Y-m-d"),
+					'check_out' => date_format($check_out,"Y-m-d"),
 					'type' => $_POST['room_type'],
 					'adult' => $_POST[ 'adult' ],
 					'children' => $_POST[ 'children' ] );
-
 				$status = checkdata($booking_data);
-
 				if ( $status === 0 ) {
 					$cap = $booking_data[ 'adult' ] + $booking_data[ 'children' ];
 					if ( $cap <= $room_no_data[ 'capacity' ] ) {
