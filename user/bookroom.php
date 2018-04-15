@@ -30,7 +30,7 @@
 					}
 				?></span>
             <div class="tab-pane active tab1">
-                <form class="form-horizontal" role="form" method="POST" action="validate.php">
+                <form class="form-horizontal" role="form" method="POST" action="validate.php" accept-charset="utf-8">
                     <div class="form-group">
                         <label class="col-sm-2 control-label">Guest Name</label>
                         <div class="col-sm-10">
@@ -116,7 +116,7 @@
                     {
                         // Loop through each of the results and append the option to the dropdown
                         $.each(result, function(k, v) {
-                            dropdown.append('<option value=s"' + k.room_type + '">' + k.room_type + '</option>');
+                            dropdown.append('<option value=s"' + v.room_type + '">' + v.room_type + '</option>');
                         });
                     }
                 }
@@ -138,17 +138,18 @@
                 });
             });
             var city = $("#city option:selected").val();
+            console.log(city);
             $.ajax({
                 type:'POST',
                 url:'validate.php',
                 data:'city='+city,
                 success:function(data){
-                    alert(data);
-                    // helpers.buildDropdown(
-                    //     jQuery.parseJSON(data),
-                    //     $('#room'),
-                    //     'Select an option'
-                    // );
+                    console.log(data);
+                    helpers.buildDropdown(
+                        JSON.parse(data),
+                        $('#room'),
+                        'Select an option'
+                    );
                 }
             });
         });

@@ -2,67 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b2c255f8-9b8f-4be3-a380-d0634373825b" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/demo.php" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/dist/css/pignose.calendar.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/dist/css/pignose.calendar.min.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/dist/fonts/icon_navs.eot" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/dist/fonts/icon_navs.svg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/dist/fonts/icon_navs.ttf" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/dist/fonts/icon_navs.woff" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/dist/fonts/pignose.calendar.eot" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/dist/fonts/pignose.calendar.svg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/dist/fonts/pignose.calendar.ttf" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/dist/fonts/pignose.calendar.woff" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/dist/js/pignose.calendar.full.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/dist/js/pignose.calendar.full.min.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/dist/js/pignose.calendar.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/dist/js/pignose.calendar.min.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/src/css/pignose.calendar.css" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/src/fonts/pignose.calendar.eot" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/src/fonts/pignose.calendar.svg" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/src/fonts/pignose.calendar.ttf" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/src/fonts/pignose.calendar.woff" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/src/js/component/classNames.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/src/js/component/classNames.spec.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/src/js/component/global.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/src/js/component/helper.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/src/js/component/helper.spec.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/src/js/component/models.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/src/js/component/models.spec.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/src/js/component/options.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/src/js/component/polyfills.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/src/js/configures/i18n.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/src/js/core.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/src/js/main.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/src/js/manager/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/src/js/manager/index.spec.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/src/js/methods/configure.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/src/js/methods/index.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/src/js/methods/init.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/src/js/methods/select.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/src/js/methods/set.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/src/js/methods/setting.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/src/js/plugins/jquery.plugin.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/src/js/shim/jquery.shim.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/src/js/shim/moment.shim.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/src/js/shim/utils.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/src/js/tests/requirejs.config.js" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/src/less/icons.less" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/src/less/index.less" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/src/less/styles.less" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/src/less/themes/blue.less" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/src/less/themes/dark.less" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/src/less/themes/default.less" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/user/src/less/variables.less" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Database/hoteldb.sql" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/Database/hoteldb_updated.sql" afterPath="$PROJECT_DIR$/Database/hoteldb_updated.sql" />
-      <change beforePath="$PROJECT_DIR$/admin/validate.php" afterPath="$PROJECT_DIR$/admin/validate.php" />
       <change beforePath="$PROJECT_DIR$/user/bookroom.php" afterPath="$PROJECT_DIR$/user/bookroom.php" />
-      <change beforePath="$PROJECT_DIR$/user/footer.php" afterPath="$PROJECT_DIR$/user/footer.php" />
-      <change beforePath="$PROJECT_DIR$/user/function.php" afterPath="$PROJECT_DIR$/user/function.php" />
-      <change beforePath="$PROJECT_DIR$/user/header.php" afterPath="$PROJECT_DIR$/user/header.php" />
-      <change beforePath="$PROJECT_DIR$/user/payment.php" afterPath="$PROJECT_DIR$/user/payment.php" />
       <change beforePath="$PROJECT_DIR$/user/validate.php" afterPath="$PROJECT_DIR$/user/validate.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -77,7 +18,7 @@
       <file leaf-file-name="demo.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/user/demo.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="648">
+            <state relative-caret-position="0">
               <caret line="27" column="6" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="27" selection-end-column="6" />
               <folding />
             </state>
@@ -97,63 +38,28 @@
       <file leaf-file-name="header.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/user/header.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="4" column="24" lean-forward="false" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
+            <state relative-caret-position="0">
+              <caret line="3" column="6" lean-forward="true" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bookroom.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="bookroom.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/user/bookroom.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="145" column="30" lean-forward="false" selection-start-line="145" selection-start-column="26" selection-end-line="145" selection-end-column="30" />
+            <state relative-caret-position="305">
+              <caret line="118" column="88" lean-forward="false" selection-start-line="118" selection-start-column="88" selection-end-line="118" selection-end-column="88" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="function.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/user/function.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="144" column="28" lean-forward="true" selection-start-line="144" selection-start-column="28" selection-end-line="144" selection-end-column="28" />
-              <folding>
-                <marker date="1523799452412" expanded="true" signature="391:485" ph="INSERT INTO ${$table}... " />
-                <marker date="1523799452412" expanded="true" signature="729:788" ph="SELECT * fro... ${$table}" />
-                <marker date="1523799452412" expanded="true" signature="1068:1109" ph="DELETE from ${$table}... " />
-                <marker date="1523799452412" expanded="true" signature="1336:1419" ph="SELECT * fro... registration" />
-                <marker date="1523799452412" expanded="true" signature="1659:1753" ph="SELECT * fro... employee" />
-                <marker date="1523799452412" expanded="true" signature="2185:2253" ph="UPDATE ${$table}... " />
-                <marker date="1523799452412" expanded="true" signature="2528:2594" ph="UPDATE ${$table}... " />
-                <marker date="1523799452412" expanded="true" signature="2833:2874" ph="SELECT * fro... ${$table}" />
-                <marker date="1523799452412" expanded="true" signature="3166:3241" ph="SELECT * fro... rooms" />
-                <marker date="1523799452412" expanded="true" signature="3547:3574" ph="SELECT DISTI... ${$table}" />
-                <marker date="1523799452412" expanded="true" signature="3912:3939" ph="SELECT DISTI... ${$table}" />
-                <marker date="1523799452412" expanded="true" signature="3912:3951" ph="SELECT DISTI... ${$table}" />
-                <marker date="1523799452412" expanded="true" signature="3912:3953" ph="SELECT DISTI... ${$table}" />
-                <marker date="1523799452412" expanded="true" signature="3912:3968" ph="SELECT DISTI... ${$table}" />
-                <marker date="1523799452412" expanded="true" signature="3912:3969" ph="SELECT DISTI... ${$table}" />
-                <marker date="1523799452412" expanded="true" signature="3912:3975" ph="SELECT DISTI... ${$table}" />
-                <marker date="1523799452412" expanded="true" signature="3912:3978" ph="SELECT DISTI... ${$table}" />
-                <marker date="1523799452412" expanded="true" signature="4253:4302" ph="SELECT * fro... employee" />
-                <marker date="1523799452412" expanded="true" signature="4626:4640" ph="SELECT * fro... ${$table}" />
-                <marker date="1523799452412" expanded="true" signature="4848:4886" ph="..." />
-                <marker date="1523799452412" expanded="true" signature="5031:5082" ph="SELECT ${$co... ${$table}" />
-                <marker date="1523799452412" expanded="true" signature="5277:5315" ph="..." />
-                <marker date="1523799452412" expanded="true" signature="5440:5454" ph="SELECT * fro... ${$table}" />
-                <marker date="1523799452412" expanded="true" signature="5676:5714" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="validate.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="validate.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/user/validate.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="8" column="5" lean-forward="false" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+            <state relative-caret-position="456">
+              <caret line="19" column="6" lean-forward="false" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -199,8 +105,8 @@
         <option value="$PROJECT_DIR$/user/footer.php" />
         <option value="$PROJECT_DIR$/user/header.php" />
         <option value="$PROJECT_DIR$/admin/validate.php" />
-        <option value="$PROJECT_DIR$/user/bookroom.php" />
         <option value="$PROJECT_DIR$/user/validate.php" />
+        <option value="$PROJECT_DIR$/user/bookroom.php" />
       </list>
     </option>
   </component>
@@ -303,7 +209,7 @@
       <workItem from="1523552457668" duration="7126000" />
       <workItem from="1523793385073" duration="7093000" />
       <workItem from="1523813553082" duration="3101000" />
-      <workItem from="1523817121435" duration="312000" />
+      <workItem from="1523817121435" duration="2263000" />
     </task>
     <task id="LOCAL-00001" summary="updated hotel and room module. Now Hotel and rooms are connected">
       <created>1523439349751</created>
@@ -382,11 +288,18 @@
       <option name="project" value="LOCAL" />
       <updated>1523559650099</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Booking updated">
+      <created>1523817594769</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1523817594769</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52059000" />
+    <option name="totallyTimeSpent" value="54010000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -787,7 +700,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/user/demo.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
+        <state relative-caret-position="0">
           <caret line="27" column="6" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="27" selection-end-column="6" />
           <folding />
         </state>
@@ -801,32 +714,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user/header.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="4" column="24" lean-forward="false" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin/validate.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
           <caret line="4" column="19" lean-forward="false" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/user/bookroom.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="145" column="30" lean-forward="false" selection-start-line="145" selection-start-column="26" selection-end-line="145" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/user/function.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="1008">
           <caret line="144" column="28" lean-forward="true" selection-start-line="144" selection-start-column="28" selection-end-line="144" selection-end-column="28" />
           <folding>
             <marker date="1523799452412" expanded="true" signature="391:485" ph="INSERT INTO ${$table}... " />
@@ -857,10 +755,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/user/header.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="3" column="6" lean-forward="true" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/user/validate.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="8" column="5" lean-forward="false" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
+        <state relative-caret-position="456">
+          <caret line="19" column="6" lean-forward="false" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/user/bookroom.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="118" column="88" lean-forward="false" selection-start-line="118" selection-start-column="88" selection-end-line="118" selection-end-column="88" />
           <folding />
         </state>
       </provider>

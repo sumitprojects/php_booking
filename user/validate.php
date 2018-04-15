@@ -2,11 +2,27 @@
 // header("Location: dashboard.php");
 	date_default_timezone_set('Asia/Kolkata');
 	include "function.php";
-	if(!empty($_POST['city'])){
-		$room_type_data = selectdistictrowbyhotelcity("rooms", "room_type", "hotel_id",$_POST['city']);
-		$data = json_encode($room_type_data);
-		return $data;
-	}
+	session_start();
+if (is_ajax()) {
+  if (isset($_POST["city"]) && !empty($_POST["city"])) { //Checks if action value exists
+    $action = $_POST["city"];
+    test_function($action);
+  }
+}
+
+//Function to check if the request is an AJAX request
+function is_ajax() {
+  return isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest';
+}
+
+function test_function($action){
+	$room_type_data = selectdistictrowbyhotelcity("rooms", "room_type", "hotel_id",$action);
+	//$room_type_data = json_encode($room_type_data);
+    echo json_encode($room_type_data);
+}
+
+
+
 	function get_format($df) {
 		$str = '';
 		$str .= ($df->invert == 1) ? ' - ' : '';
@@ -34,8 +50,6 @@
 
 		echo $str;
 	}
-	include("function.php");
-	session_start();
 	if ( isset($_POST[ "book" ]) ) {
 		if ( isset($_POST[ "room_type" ]) ) {
 			$check_in = new DateTime($_POST['check_in']);
