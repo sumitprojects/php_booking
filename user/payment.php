@@ -1,10 +1,8 @@
 <?php
 	include 'header.php';
 	include 'function.php';
-	if(empty($_SESSION['booking_id'])){
 		$booking_data = selectalldatabyid("booking", "booking_id", $_SESSION[ 'booking_id' ]);
 		$reg_user = selectalldatabyid("registration","reg_id",$booking_data['reg_id']);
-	}
 ?>
 
     <body>
@@ -13,7 +11,7 @@
     <div class="container_12">
         <div class="grid_12">
             <div class="menu_block">
-				<?PHP include 'menu.php'; ?>
+				<?PHP include 'menu.php';  var_dump($_SESSION['booking_id']);?>
                 <div class="clear"></div>
             </div>
         </div>
@@ -43,7 +41,7 @@
             </tr>
             <tr>
                 <th>Room Type</th>
-                <td><?php echo $booking_data[ 'room_type' ]; ?></td>
+                <td><?php echo $booking_data[ 'type' ]; ?></td>
             </tr>
             <tr>
                 <th>Adult</th>
@@ -58,9 +56,10 @@
                 <td><?= $booking_data[ 'total_amount' ] ?></td>
             </tr>
             <tr>
-                <td><a href="bill.php">Generate Bill</a></td>
+                <td><a href="bill.php">Do Payment</a></td>
             </tr>
         </table>
+
     </div>
 </div>
 <!--==============================footer=================================-->

@@ -10,6 +10,33 @@ if (is_ajax()) {
   }
 }
 
+//crud for payment
+if (isset($_POST["payment"])) {
+    if (empty($_POST['bill_id'])) {
+    	$booking_data = selectalldatabyid("booking", "booking_id", $_SESSION[ 'booking_id' ]);
+		$reg_user = selectalldatabyid("registration","reg_id",$booking_data['reg_id']);
+        
+        $bill_data = array("reg_id" => $booking_data['reg_id'],
+        					"room_no" => $booking_data['room_no'],
+        	               "card_no" => $_POST['card_no'], 
+        	               "cvv" => $_POST['cvv'],
+        	               "cvv" => "Payment Done",
+        	                "booking_id" => $_SESSION['booking_id']);
+            $status = checkdata($bill_data);
+            if ($status === 0) {
+                $success = build_sql_insert("billing", $bill_data);
+                $_SESSION['error'] = "Payment Done successfully";
+                header("location:profile.php");
+            } else {
+                $_SESSION['error'] = "Please Fill All Data";
+                header("location:bill.php");
+            }
+    } 
+} else {
+    // header("location:dashboard.php");
+}
+
+
 //Function to check if the request is an AJAX request
 function is_ajax() {
   return isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest';
@@ -100,7 +127,7 @@ function test_function($action){
 	{
 		$error = 0;
 		foreach ( $data as $key => $value ) {
-			if ( empty($value) ) {
+			if ($value == "") ) {
 				$error = 1;
 				break;
 			} else {

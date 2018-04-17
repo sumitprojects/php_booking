@@ -83,6 +83,7 @@
                         <label class="col-sm-2 control-label">Children</label>
                         <div class="col-sm-10">
                             <select class="form-control" name="children">
+                                <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
